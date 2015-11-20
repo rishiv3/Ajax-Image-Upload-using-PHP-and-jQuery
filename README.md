@@ -19,4 +19,4 @@ Following steps are pointed under this process :
 
 3.  PHP script to store image.
 
-Next step - update the values to the database
+Next step - update the values to the database using MySQL
