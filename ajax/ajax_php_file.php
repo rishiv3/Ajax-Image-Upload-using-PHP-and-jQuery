@@ -15,6 +15,12 @@ if (isset($_FILES["file"]["type"])) {
 				$sourcePath = $_FILES['file']['tmp_name']; // Storing source path of the file in a variable
 				$targetPath = "../upload/" . $_FILES['file']['name']; // Target path where file is to be stored
 				move_uploaded_file($sourcePath, $targetPath); // Moving Uploaded file
+				
+				// replace $host,$username,$password,$dbname with real info
+				$dbh=mysqli_connect($host,$username,$password,$dbname);
+				mysqli_query($dbh,"INSERT INTO `files` (filename,path) VALUES ('".$_FILES['uploaded_file']['tmp_name']."','".$file_path."')") or trigger_error($link->error."[ $sql]");
+				mysqli_close($dbh);
+
 				echo "<span id='success'>Image Uploaded Successfully...!!</span><br/>";
 				echo "<br/><b>File Name:</b> " . $_FILES["file"]["name"] . "<br>";
 				echo "<b>Type:</b> " . $_FILES["file"]["type"] . "<br>";
