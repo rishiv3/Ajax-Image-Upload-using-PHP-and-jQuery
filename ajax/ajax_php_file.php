@@ -18,7 +18,7 @@ if (isset($_FILES["file"]["type"])) {
 				
 				// replace $host,$username,$password,$dbname with real info
 				$dbh=mysqli_connect($host,$username,$password,$dbname);
-				mysqli_query($dbh,"INSERT INTO `files` (filename,path) VALUES ('".$_FILES['uploaded_file']['tmp_name']."','".$file_path."')") or trigger_error($link->error."[ $sql]");
+				mysqli_query($dbh,"INSERT INTO `files` (filename,path) VALUES ('".$_FILES['file']['tmp_name']."','".$targetPath."')");
 				mysqli_close($dbh);
 
 				echo "<span id='success'>Image Uploaded Successfully...!!</span><br/>";
